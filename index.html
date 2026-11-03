@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanYourTab — Vibe Code Your Android Tablet with Antigravity AI</title>
+  <meta name="description" content="Debloat your Android tablet and replace its laggy stock UI with a silky-smooth Apple iPadOS + Cyberpunk HUD hybrid. 100% free, no root, 1 prompt.">
+  <meta name="theme-color" content="#07080e">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CleanYourTab — Debloat & Vibe Code Your Android Tablet">
+  <meta property="og:description" content="Transform any bloated Android tablet into a futuristic Cyberpunk iPadOS hybrid using Google Antigravity AI. 100% Free, No Root, 1-Click Reversible.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            cyber: {
+              cyan: '#00f0ff',
+              blue: '#0070f3',
+              purple: '#a855f7',
+              dark: '#07080e',
+              card: '#0d111a',
+              border: '#1b2434',
+            }
+          },
+          boxShadow: {
+            'glow-cyan': '0 0 35px -5px rgba(0, 240, 255, 0.3)',
+            'glow-purple': '0 0 35px -5px rgba(168, 85, 247, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Glassmorphism & custom glowing background */
+    body {
+      background-color: #06080E;
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 240, 255, 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 85% 60%, rgba(168, 85, 247, 0.08), transparent);
+      color: #E2E8F0;
+    }
+    .glass-card {
+      background: rgba(13, 17, 26, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-nav {
+      background: rgba(6, 8, 14, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .glow-cyan-text {
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+    }
+    .code-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .code-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.05); }
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen font-sans selection:bg-cyan-500/20 selection:text-cyan-300">
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <span class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_12px_#00f0ff] animate-pulse"></span>
+        <span class="font-display font-extrabold text-xl tracking-tight text-white group-hover:text-cyan-400 transition-colors">
+          CleanYour<span class="text-cyan-400">Tab</span>
+        </span>
+        <span class="hidden sm:inline-block text-[11px] font-mono tracking-wider px-2 py-0.5 rounded-full bg-cyan-950/70 text-cyan-300 border border-cyan-800/50">
+          v2.0 · ANTIGRAVITY AI
+        </span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#showcase" class="hover:text-cyan-400 transition-colors">Before & After</a>
+        <a href="#prompt-box" class="hover:text-cyan-400 transition-colors">Master Prompt</a>
+        <a href="#how-it-works" class="hover:text-cyan-400 transition-colors">How It Works</a>
+        <a href="#safety" class="hover:text-cyan-400 transition-colors">Safety Guarantee</a>
+        <a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#prompt-box" class="relative group px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-black bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-white transition-all duration-200 shadow-glow-cyan flex items-center gap-1.5">
+          <i data-lucide="terminal" class="w-4 h-4"></i>
+          <span>Get Prompt</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO SECTION ================= -->
+  <header class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      
+      <!-- Pill Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono tracking-wide mb-6">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+        </span>
+        100% FREE · NO ROOT · 1-PROMPT VIBE CODING
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.1] mb-6">
+        Debloat Your Android Tablet.<br>
+        <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-400 bg-clip-text text-transparent glow-cyan-text">
+          Vibe Code a Cyber UI.
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed mb-10">
+        Turn any sluggish, bloat-heavy Android tablet into a silky-smooth hybrid of <strong class="text-white font-semibold">Apple iPadOS</strong> and a <strong class="text-cyan-300 font-semibold">Cyberpunk HUD</strong> in 10 minutes—powered autonomously by <strong class="text-white font-semibold">Google Antigravity AI</strong>.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <a href="#prompt-box" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base text-black bg-cyan-400 hover:bg-cyan-300 transition-all shadow-glow-cyan flex items-center justify-center gap-2.5">
+          <i data-lucide="copy" class="w-5 h-5"></i>
+          <span>Copy Master Prompt</span>
+        </a>
+        <a href="#video-demo" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base text-slate-200 glass-card hover:bg-white/[0.08] hover:text-white transition-all flex items-center justify-center gap-2.5">
+          <i data-lucide="play-circle" class="w-5 h-5 text-cyan-400"></i>
+          <span>Watch Video Guide</span>
+        </a>
+      </div>
+
+      <!-- Quick Feature Badges -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto text-xs sm:text-sm text-slate-400 font-medium">
+        <div class="glass-card py-2.5 px-3 rounded-lg flex items-center justify-center gap-2">
+          <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
+          <span>Zero Root Needed</span>
+        </div>
+        <div class="glass-card py-2.5 px-3 rounded-lg flex items-center justify-center gap-2">
+          <i data-lucide="rotate-ccw" class="w-4 h-4 text-emerald-400"></i>
+          <span>1-Click Restore Script</span>
+        </div>
+        <div class="glass-card py-2.5 px-3 rounded-lg flex items-center justify-center gap-2">
+          <i data-lucide="pen-tool" class="w-4 h-4 text-purple-400"></i>
+          <span>Stylus Pen Intact</span>
+        </div>
+        <div class="glass-card py-2.5 px-3 rounded-lg flex items-center justify-center gap-2">
+          <i data-lucide="zap" class="w-4 h-4 text-amber-400"></i>
+          <span>2-3GB RAM Freed</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SHOWCASE: BEFORE & AFTER ================= -->
+  <section id="showcase" class="py-20 border-t border-white/[0.06] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-3">
+          See the Real Transformation
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Captured directly from a real tablet (Lenovo Idea Tab TB336FU). No mockups, no simulations.
+        </p>
+      </div>
+
+      <!-- Comparison Cards -->
+      <div class="grid md:grid-cols-2 gap-8 items-stretch mb-12">
+        
+        <!-- BEFORE CARD -->
+        <div class="glass-card rounded-2xl overflow-hidden border-red-500/20 flex flex-col">
+          <div class="p-4 bg-red-950/30 border-b border-red-500/20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+              <span class="font-bold text-sm text-red-300">BEFORE: Stock Factory Bloat</span>
+            </div>
+            <span class="text-xs font-mono text-red-400/80">35+ OEM Trackers Active</span>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div class="rounded-xl overflow-hidden border border-white/10 mb-4 bg-black/60 relative group">
+              <img src="assets/before_stock.png" alt="Stock Bloated UI" class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]">
+            </div>
+            <ul class="text-xs sm:text-sm text-slate-400 space-y-2">
+              <li class="flex items-start gap-2">
+                <i data-lucide="x" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+                <span>Pre-loaded partner apps, push ads, and background news feeds</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="x" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+                <span>High idle battery drain and only ~2.2GB free RAM</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="x" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+                <span>Stuttering app switcher and rigid default layout</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- AFTER CARD -->
+        <div class="glass-card rounded-2xl overflow-hidden border-cyan-500/40 shadow-glow-cyan flex flex-col">
+          <div class="p-4 bg-cyan-950/40 border-b border-cyan-500/30 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span class="font-bold text-sm text-cyan-300">AFTER: Vibe Coded Cyber UI</span>
+            </div>
+            <span class="text-xs font-mono text-cyan-400">90Hz Butter-Smooth · 4.8GB Free RAM</span>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div class="rounded-xl overflow-hidden border border-cyan-500/20 mb-4 bg-black/60 relative group">
+              <img src="assets/after_scifi_hud.png" alt="Futuristic Cyberpunk UI" class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]">
+            </div>
+            <ul class="text-xs sm:text-sm text-slate-300 space-y-2">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                <span>Rotating cyan radar core with custom name ("HANNAH")</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                <span>Frosted Apple dock + smooth touch drag & drop app ordering</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                <span>Live RAM, Wi-Fi SSID, battery bolt telemetry & lockscreen sync</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sub-gallery Features -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass-card p-3 rounded-xl">
+          <img src="assets/portrait_mode.png" alt="Portrait Mode" class="rounded-lg w-full h-36 object-cover object-top mb-2">
+          <p class="text-xs font-bold text-white">Full-Sensor Auto-Rotate</p>
+          <p class="text-[11px] text-slate-400">Seamless Landscape & Portrait</p>
+        </div>
+        <div class="glass-card p-3 rounded-xl">
+          <img src="assets/volume_control.png" alt="iOS Volume Pill" class="rounded-lg w-full h-36 object-cover object-top mb-2">
+          <p class="text-xs font-bold text-white">Frosted Volume Pill</p>
+          <p class="text-[11px] text-slate-400">Apple iPadOS-style HUD</p>
+        </div>
+        <div class="glass-card p-3 rounded-xl">
+          <img src="assets/scrolled_view.png" alt="Reactive Scroll Fade" class="rounded-lg w-full h-36 object-cover object-top mb-2">
+          <p class="text-xs font-bold text-white">Reactive Scroll-Fade</p>
+          <p class="text-[11px] text-slate-400">HUD auto-hides when browsing apps</p>
+        </div>
+        <div class="glass-card p-3 rounded-xl">
+          <img src="assets/lockscreen_sync.png" alt="Lockscreen Sync" class="rounded-lg w-full h-36 object-cover object-top mb-2">
+          <p class="text-xs font-bold text-white">Dual Lockscreen Sync</p>
+          <p class="text-[11px] text-slate-400">1-tap synchronized wallpaper</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MASTER PROMPT CUSTOMIZER ================= -->
+  <section id="prompt-box" class="py-20 border-t border-white/[0.06] relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold">The 1-Prompt Magic</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mt-1 mb-3">
+          Customize Your Master Prompt
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Tweak your personal preferences below. The prompt updates automatically in real-time.
+        </p>
+      </div>
+
+      <!-- Customizer Controls -->
+      <div class="glass-card rounded-2xl p-6 border-white/10 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          
+          <!-- Custom Name -->
+          <div>
+            <label class="block text-xs font-mono font-semibold uppercase text-slate-300 mb-2">
+              1. Your Name / Callsign
+            </label>
+            <input type="text" id="inputName" value="HANNAH" class="w-full px-3.5 py-2.5 rounded-lg bg-black/60 border border-white/10 text-white font-mono text-sm focus:border-cyan-400 focus:outline-none transition-colors">
+            <span class="text-[11px] text-slate-500 mt-1 block">Inscribed at radar center & HUD</span>
+          </div>
+
+          <!-- Accent Theme -->
+          <div>
+            <label class="block text-xs font-mono font-semibold uppercase text-slate-300 mb-2">
+              2. Accent Color Theme
+            </label>
+            <select id="selectTheme" class="w-full px-3.5 py-2.5 rounded-lg bg-black/60 border border-white/10 text-white font-mono text-sm focus:border-cyan-400 focus:outline-none transition-colors">
+              <option value="CYAN">Cyber Cyan (Default)</option>
+              <option value="NEON_BLUE">Neon Blue</option>
+              <option value="PURPLE">Cyberpunk Purple</option>
+              <option value="EMERALD">Matrix Emerald</option>
+              <option value="AMBER">Solar Amber</option>
+            </select>
+            <span class="text-[11px] text-slate-500 mt-1 block">UI accents & glowing rings</span>
+          </div>
+
+          <!-- Tablet Model -->
+          <div>
+            <label class="block text-xs font-mono font-semibold uppercase text-slate-300 mb-2">
+              3. Tablet Model
+            </label>
+            <input type="text" id="inputModel" value="Lenovo Idea Tab TB336FU" class="w-full px-3.5 py-2.5 rounded-lg bg-black/60 border border-white/10 text-white font-mono text-sm focus:border-cyan-400 focus:outline-none transition-colors">
+            <span class="text-[11px] text-slate-500 mt-1 block">Or type "Auto-detect via ADB"</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- The Prompt Window -->
+      <div class="glass-card rounded-2xl border-white/10 overflow-hidden shadow-2xl relative">
+        <!-- Terminal Header -->
+        <div class="px-5 py-3.5 bg-black/80 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-2 text-xs font-mono text-slate-400">antigravity_master_prompt.md</span>
+          </div>
+          
+          <button id="btnCopyPrompt" onclick="copyMasterPrompt()" class="px-4 py-1.5 rounded-lg text-xs font-bold text-black bg-cyan-400 hover:bg-cyan-300 transition-all flex items-center gap-1.5 shadow-glow-cyan">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span id="copyBtnText">Copy Master Prompt</span>
+          </button>
+        </div>
+
+        <!-- Code Block -->
+        <div class="p-5 bg-black/70 max-h-[460px] overflow-y-auto code-scroll font-mono text-xs text-slate-300 leading-relaxed">
+          <pre id="promptCodeContainer" class="whitespace-pre-wrap select-all"></pre>
+        </div>
+      </div>
+
+      <!-- Toast Feedback -->
+      <div id="copyToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 glass-card border-cyan-400/50 px-5 py-3 rounded-xl shadow-glow-cyan flex items-center gap-3">
+        <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400"></i>
+        <div>
+          <p class="text-xs font-bold text-white">Copied to Clipboard!</p>
+          <p class="text-[11px] text-slate-300">Open Antigravity AI, paste prompt and press Enter.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS (3 STEPS) ================= -->
+  <section id="how-it-works" class="py-20 border-t border-white/[0.06] relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-3">
+          3 Simple Steps to Vibe Code
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          No command line typing, no downloading mystery APKs, zero technical hurdles.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- STEP 1 -->
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="w-10 h-10 rounded-xl bg-cyan-950/60 border border-cyan-500/40 text-cyan-400 font-display font-bold text-lg flex items-center justify-center mb-5">
+            1
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-2">Prep Your Tablet</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Enable developer access so the AI can communicate safely over ADB.
+          </p>
+          <div class="bg-black/50 p-3 rounded-lg border border-white/5 space-y-2 text-xs font-mono text-slate-300">
+            <div>• Settings &gt; About Tablet &gt; Tap <strong>Build Number</strong> 7 times</div>
+            <div>• System &gt; Developer Options &gt; Turn ON <strong>USB Debugging</strong></div>
+            <div>• Enable <strong>Stay Awake</strong> (Never sleep while charging)</div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-500/40 text-purple-400 font-display font-bold text-lg flex items-center justify-center mb-5">
+            2
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-2">Connect to Laptop</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Plug in a USB Type-C cable between your computer and the tablet.
+          </p>
+          <div class="bg-black/50 p-3 rounded-lg border border-white/5 space-y-2 text-xs font-mono text-slate-300">
+            <div>• Connect Type-C to Type-C wire (or use Wireless Debugging)</div>
+            <div>• On tablet popup: Check <strong>"Always allow from this computer"</strong></div>
+            <div>• Tap <strong>Allow</strong></div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="glass-card rounded-2xl p-6 relative border-cyan-500/30">
+          <div class="w-10 h-10 rounded-xl bg-cyan-400 text-black font-display font-bold text-lg flex items-center justify-center mb-5 shadow-glow-cyan">
+            3
+          </div>
+          <h3 class="font-display font-bold text-lg text-white mb-2">Paste & Vibe Code</h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            Open Google Antigravity, paste the prompt, and sit back while the AI builds.
+          </p>
+          <div class="bg-cyan-950/30 p-3 rounded-lg border border-cyan-500/30 space-y-2 text-xs text-cyan-200">
+            <div class="font-bold">💡 The "Always Allow" Secret:</div>
+            <div>When prompted for permissions, click <strong>"Always allow from this module in this session"</strong> to let the AI build everything hands-free!</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= HARDWARE SAFETY GUARANTEE ================= -->
+  <section id="safety" class="py-20 border-t border-white/[0.06] relative bg-black/40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-xl mx-auto mb-14">
+        <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">100% No-Brick Guarantee</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mt-1 mb-3">
+          Engineered for Tablet Hardware
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Unlike generic phone debloaters that accidentally kill stylus pens or audio, CleanYourTab preserves hardware integrity.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="glass-card p-5 rounded-xl border-emerald-500/20">
+          <div class="w-9 h-9 rounded-lg bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mb-3.5">
+            <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm mb-1.5">1-Click Factory Restore</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Before touching anything, the AI creates an automated backup and generates a <code class="text-emerald-300">restore_stock.sh</code> script. Revert to 100% factory state with one click.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-cyan-500/20">
+          <div class="w-9 h-9 rounded-lg bg-cyan-950/60 border border-cyan-500/40 text-cyan-400 flex items-center justify-center mb-3.5">
+            <i data-lucide="pen-tool" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm mb-1.5">Stylus & Digitizers Protected</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Lenovo Precision Pen, Samsung S-Pen, and Xiaomi Smart Pen drivers are strictly whitelisted. Pen latency, pressure, and buttons stay 100% operational.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-purple-500/20">
+          <div class="w-9 h-9 rounded-lg bg-purple-950/60 border border-purple-500/40 text-purple-400 flex items-center justify-center mb-3.5">
+            <i data-lucide="volume-2" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm mb-1.5">Dolby Atmos & Audio Untouched</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Quad-speaker acoustic tuning and spatial audio DSPs are protected. Disabling system audio components is strictly banned.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-white/10">
+          <div class="w-9 h-9 rounded-lg bg-slate-800 text-slate-200 flex items-center justify-center mb-3.5">
+            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm mb-1.5">Widevine L1 Safe</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Bans touching factory or engineering test menus so DRM flags are never tripped. Stream Netflix and Prime Video in full 1080p/4K HDR.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-white/10">
+          <div class="w-9 h-9 rounded-lg bg-slate-800 text-slate-200 flex items-center justify-center mb-3.5">
+            <i data-lucide="camera" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm mb-1.5">Camera & Face Unlock Intact</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Hardware biometrics, front video conferencing camera, and Camera2 API providers remain completely untouched.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl border-white/10">
+          <div class="w-9 h-9 rounded-lg bg-slate-800 text-slate-200 flex items-center justify-center mb-3.5">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm mb-1.5">Google Play Store & GMS</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Google Play Services, Play Store, and account sync are 100% active. All your favorite apps update normally.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= VIDEO DEMO SECTION ================= -->
+  <section id="video-demo" class="py-20 border-t border-white/[0.06] relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      
+      <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold">Video Walkthrough</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mt-1 mb-4">
+        Watch the Full Vibe Coding Guide
+      </h2>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto mb-10">
+        Follow the exact video demonstration showing the full transformation from unboxing bloat to Cyberpunk iPadOS.
+      </p>
+
+      <!-- Video Card -->
+      <div class="glass-card rounded-2xl p-3 border-cyan-500/30 shadow-glow-cyan overflow-hidden relative group">
+        <div class="aspect-video w-full rounded-xl bg-black/90 flex flex-col items-center justify-center relative overflow-hidden">
+          <img src="assets/after_scifi_hud.png" alt="Video Thumbnail" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity">
+          <div class="relative z-10 flex flex-col items-center">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-cyan-400/90 text-black flex items-center justify-center shadow-glow-cyan transform group-hover:scale-110 transition-transform cursor-pointer">
+              <i data-lucide="play" class="w-8 h-8 fill-black translate-x-0.5"></i>
+            </div>
+            <span class="mt-4 text-xs font-mono font-semibold tracking-wider text-cyan-300 bg-black/70 px-3 py-1 rounded-full border border-cyan-500/30">
+              YOUTUBE VIDEO PREMIERE
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SUPPORTED DEVICES MATRIX ================= -->
+  <section class="py-16 border-t border-white/[0.06] bg-black/20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-6">
+        Works with Any Android 8.0 to Android 16 Tablet
+      </h3>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-300">
+        <span class="px-3 py-1.5 rounded-lg glass-card">Lenovo Idea Tab TB336FU</span>
+        <span class="px-3 py-1.5 rounded-lg glass-card">Lenovo Tab P11 / P12 Pro</span>
+        <span class="px-3 py-1.5 rounded-lg glass-card">Samsung Galaxy Tab S7 / S8 / S9 / S10</span>
+        <span class="px-3 py-1.5 rounded-lg glass-card">Samsung Galaxy Tab A Series</span>
+        <span class="px-3 py-1.5 rounded-lg glass-card">Xiaomi Pad 5 / 6 / 7 Pro</span>
+        <span class="px-3 py-1.5 rounded-lg glass-card">Redmi Pad SE</span>
+        <span class="px-3 py-1.5 rounded-lg glass-card">OnePlus Pad & Pad Go</span>
+        <span class="px-3 py-1.5 rounded-lg glass-card">Google Pixel Tablet</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ACCORDION ================= -->
+  <section id="faq" class="py-20 border-t border-white/[0.06] relative">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-14">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-3">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Everything you need to know about vibe coding and tablet safety.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <details class="glass-card rounded-xl p-4 group" open>
+          <summary class="font-bold text-sm text-white flex items-center justify-between cursor-pointer list-none">
+            <span>Does this require rooting or unlocking the bootloader?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            No! It is 100% no-root. Everything runs via standard Android Debug Bridge (ADB) user-space commands (<code class="text-cyan-300">pm disable-user --user 0</code>). System partitions remain completely untouched.
+          </p>
+        </details>
+
+        <details class="glass-card rounded-xl p-4 group">
+          <summary class="font-bold text-sm text-white flex items-center justify-between cursor-pointer list-none">
+            <span>Will this void my tablet's warranty?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            No. Enabling Developer Options and running ADB does not void manufacturer warranties. Since no bootloader unlocking or root exploit is used, Knox / warranty bit counters remain untouched at 0x0.
+          </p>
+        </details>
+
+        <details class="glass-card rounded-xl p-4 group">
+          <summary class="font-bold text-sm text-white flex items-center justify-between cursor-pointer list-none">
+            <span>How do I revert back to the stock factory UI?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            The AI automatically generates a <code class="text-cyan-300">restore_stock.sh</code> script in Phase 1 before disabling a single app. To undo everything, simply run <code class="text-cyan-300">bash restore_stock.sh</code> over ADB and your original stock launcher and all apps are restored immediately.
+          </p>
+        </details>
+
+        <details class="glass-card rounded-xl p-4 group">
+          <summary class="font-bold text-sm text-white flex items-center justify-between cursor-pointer list-none">
+            <span>Will this erase my personal photos or data?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            No. CleanYourTab does not perform a factory reset or touch user storage. Your photos, files, downloads, and personal apps remain completely intact.
+          </p>
+        </details>
+
+        <details class="glass-card rounded-xl p-4 group">
+          <summary class="font-bold text-sm text-white flex items-center justify-between cursor-pointer list-none">
+            <span>What if I want to customize the HUD colors or dock apps later?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            That's the beauty of Vibe Coding! Just open your Antigravity chat and tell the AI in plain English: <em>"Change the HUD accent to Neon Purple"</em> or <em>"Add YouTube to dock slot 2"</em>. The AI will recompile and deploy your updates in seconds.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-12 border-t border-white/[0.06] glass-nav text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f0ff]"></span>
+        <span class="font-display font-bold text-white text-sm">CleanYour<span class="text-cyan-400">Tab</span></span>
+        <span class="text-slate-600">|</span>
+        <span>Open Source MIT License</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#prompt-box" class="hover:text-cyan-400 transition-colors">Master Prompt</a>
+        <a href="#safety" class="hover:text-cyan-400 transition-colors">Safety</a>
+        <a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a>
+        <a href="https://github.com" target="_blank" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Master Prompt Generator
+    function generatePromptText(name, theme, model) {
+      return `I want to debloat my Android tablet and replace its bloated stock interface with a silky-smooth, custom Apple iPadOS + Cyberpunk HUD hybrid UI.
+My tablet model is: ${model}.
+Work on the real device, step by step, and verify everything you do with screenshots pulled from the tablet. Ask me before anything that depends on my preferences.
+Where these steps name a script or file under tools/, docs/, or backup/ that does not yet exist in your workspace, create and maintain it so safety checks remain reproducible.
+
+================================================================================
+[PREFERENCES & CUSTOMIZATION]
+- CUSTOM_NAME: "${name}"                  <-- Name, callsign, or protocol ID for HUD
+- ACCENT_THEME: "${theme}"                  <-- CYAN, NEON_BLUE, PURPLE, EMERALD, AMBER
+- PRESERVED_HARDWARE: Active Stylus/Pen engine, Dolby Atmos/Audio DSP, Camera, Play Store
+================================================================================
+
+---
+
+### 1. CONNECT & ENVIRONMENT RECON
+- Find the tablet over ADB (USB Type-C or Wireless Debugging). If multiple devices appear, identify the tablet by model (getprop ro.product.model) and target it explicitly with -s <serial>.
+- If the stock adb binary fails with "No route to host" on macOS over Wi-Fi, that is macOS Local Network privacy blocking adb: use the Python adb-shell package in a venv as the ADB client instead, or guide me to switch to a wired USB Type-C connection.
+- If port 5555 stays closed, the tablet may use Android Wireless Debugging: discover it with dns-sd -B _adb-tls-connect._tcp or adb mdns services, ask me for the 6-digit pairing code and port under Developer options > Wireless debugging > Pair device, then run adb pair, adb connect, and switch to persistent port with adb tcpip 5555.
+- Tell me when the "Allow USB debugging?" RSA fingerprint prompt appears on the tablet screen so I can check "Always allow from this computer" and tap OK.
+- Check USB power and sleep settings before starting: verify that "Stay Awake" (Keep screen on while charging) is enabled in Developer Options. If settings get global stay_on_while_plugged_in returns 0, set it to 3.
+- Disable ADB authorization timeouts: settings put global adb_allowed_connection_time 0.
+- If adb install hangs on Android 14/15/16, push APK to /data/local/tmp/ and execute pm install -r -d -g /data/local/tmp/<app>.apk over shell instead.
+
+---
+
+### 2. BACK UP FIRST (NO-BRICK GUARANTEE)
+- Before altering a single package or system setting, dump full package state into a timestamped /backup/ directory:
+  - pm list packages -f -u > backup/packages_full.txt
+  - pm list packages -d > backup/packages_disabled.txt
+  - settings list global > backup/settings_global.txt
+  - getprop > backup/getprop.txt
+  - wm size > backup/display_size.txt
+  - wm density > backup/display_density.txt
+- Generate an executable, self-contained restore script (restore_stock.sh) containing pm enable <pkg> and cmd package install-existing <pkg> for every single package you disable. Include commands to reset the default Home activity back to the stock launcher, so I can revert to 100% factory default at any time in one click.
+- Check tablet battery level (dumpsys battery | grep level). If battery is below 20%, warn me before compiling.
+
+---
+
+### 3. SURGICAL TABLET DEBLOAT (HARDWARE PRESERVATION)
+- Disable targets exclusively using pm disable-user --user 0 <package>. NEVER execute pm uninstall on system partitions.
+- STRICT TABLET HARDWARE WHITELIST — NEVER DISABLE:
+  - Active Stylus / Pen Engine & digitizers (penservice, com.zui.pengen, com.samsung.android.service.penable, com.xiaomi.pen.service).
+  - Audio Engine & DSP Tuning (com.dolby.dax.service, com.dolby.dax.editor, spatial audio HALs).
+  - Camera, Camera2 providers, Face Unlock, and Biometrics.
+  - Core Android system packages: com.android.systemui, com.android.shell, com.android.settings, com.android.providers.*, permission controller, ext services, gesture navigation packages.
+  - Google Play Services, Play Store, and Package Installer.
+- Safe targets: Google Entertainment Space (com.google.android.apps.mediahome.launcher), OEM User Centers, feedback agents, duplicate browsers.
+- Never touch factory/test menu packages (*factory*, *ate*, *mmi*) that burn Widevine L1 to L3!
+- Disable in small batches of 5 to 8 packages and screenshot between them.
+- Wait 15 seconds or run adb shell sync before rebooting to bypass Android's WRITE_SETTINGS_DELAY.
+
+---
+
+### 4. NATIVE CUSTOM UI ENGINE (IPADOS FROSTED GLASS + CYBERPUNK HUD)
+- Target Android 14/15/16 with AndroidX, minSdk 26+.
+- Build and compile a lightweight native Android application (com.custom.vibehome):
+  - Set android:screenOrientation="fullSensor" and listen to onConfigurationChanged to support Landscape (2560x1600) and Portrait (1600x2560).
+  - Set settings put system accelerometer_rotation 1.
+  - Declare <queries> for android.intent.action.MAIN and android.intent.category.LAUNCHER in AndroidManifest.xml.
+  - Make window explicitly opaque (windowIsTranslucent=false, windowBackground=@android:color/black).
+  - Top Glass Telemetry Bar: Live greeting, real-time RAM % (ActivityManager), Wi-Fi SSID, live battery % pill with charging bolt, Wallpaper picker & Settings.
+  - Futuristic Sci-Fi HUD Widget:
+    - Sized to 350dp x 240dp in left negative space (never covers wallpaper faces).
+    - Header: "● PROTOCOL: ${name} // ONLINE"
+    - Subtitle: "PILOT: ${name} · QUANTUM CORE ${model}"
+    - Animated rotating radar reactor core with glowing cyan concentric rings and "${name}" at center.
+    - Voice Assistant button [ 🎙 ${name} AI ] launching Google Voice Assistant.
+    - Reactive Scroll-Fade: When scrolling up on app grid (scrollY >= 70dp), fade HUD to alpha 0 and View.GONE.
+  - Touch Drag & Drop Dock & Grid:
+    - Frosted glass dock at bottom for pinned favorites.
+    - Touch drag-and-drop via ItemTouchHelper with haptic feedback, saved persistently to order.txt.
+  - Wallpaper Picker & Lockscreen Sync:
+    - Modern Photo Picker syncing chosen image to BOTH Homescreen and System Lockscreen.
+- Set as default home: cmd role add-role-holder android.app.role.HOME com.custom.vibehome and fallback cmd package set-home-activity com.custom.vibehome/.MainActivity.
+- Disable stock launcher safely with pm disable-user --user 0 <stock_launcher>.
+
+---
+
+### 5. VERIFY & DELIVER
+- Capture live screenshots after each milestone: adb exec-out screencap -p > shots/<milestone>.png.
+- Deliver source code, compiled APK, restore_stock.sh, and README.md.`;
+    }
+
+    const inputName = document.getElementById('inputName');
+    const selectTheme = document.getElementById('selectTheme');
+    const inputModel = document.getElementById('inputModel');
+    const promptCodeContainer = document.getElementById('promptCodeContainer');
+    const copyToast = document.getElementById('copyToast');
+    const copyBtnText = document.getElementById('copyBtnText');
+
+    function updatePromptPreview() {
+      const name = inputName.value.trim() || 'HANNAH';
+      const theme = selectTheme.value;
+      const model = inputModel.value.trim() || 'Lenovo Idea Tab TB336FU';
+      promptCodeContainer.textContent = generatePromptText(name, theme, model);
+    }
+
+    inputName.addEventListener('input', updatePromptPreview);
+    selectTheme.addEventListener('change', updatePromptPreview);
+    inputModel.addEventListener('input', updatePromptPreview);
+
+    // Initial render
+    updatePromptPreview();
+
+    // Copy to Clipboard
+    function copyMasterPrompt() {
+      const promptText = promptCodeContainer.textContent;
+      navigator.clipboard.writeText(promptText).then(() => {
+        copyBtnText.textContent = 'Copied!';
+        copyToast.classList.remove('translate-y-20', 'opacity-0');
+        copyToast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+          copyBtnText.textContent = 'Copy Master Prompt';
+          copyToast.classList.add('translate-y-20', 'opacity-0');
+          copyToast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>
+
